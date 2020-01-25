@@ -5,19 +5,88 @@
   "repository": "git@github.com:stephenkoo/aesther.git",
   "author": "Stephen Koo <me@stephenkoo.dev>",
   "license": "MIT",
-  "dependencies": {
-    "next": "^9.2.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
-  },
   "scripts": {
     "dev": "next",
-    "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "storybook": "start-storybook -p 6006",
+    "build": "yarn run lint && yarn run build-lib && build-storybook && next build",
+    "build-lib": "tsc && yarn run copy-svg-to-lib && yarn run copy-png-to-lib",
+    "build-lib-watch": "tsc -w",
+    "build-storybook": "build-storybook",
+    "copy-svg-to-lib": "cpx \"./src/**/*.svg\" ./build/lib",
+    "copy-png-to-lib": "cpx \"./src/**/*.png\" ./build/lib",
+    "lint": "tslint -c tslint.json './src/**/*.{ts,tsx}'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest -- --coverage"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "prettier --write",
+      "stylelint",
+      "git add"
+    ],
+    "*.{json,md,gql,graphql}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "next": "^9.2.0",
+    "polished": "^3.4.2",
+    "ramda": "^0.26.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "styled-components": "^5.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@storybook/addon-a11y": "^5.3.8",
+    "@storybook/addon-actions": "^5.3.8",
+    "@storybook/addon-docs": "^5.3.8",
+    "@storybook/addon-info": "^5.3.8",
+    "@storybook/addon-knobs": "^5.3.8",
+    "@storybook/addon-links": "^5.3.8",
+    "@storybook/addon-storysource": "^5.3.8",
+    "@storybook/addons": "^5.3.8",
+    "@storybook/preset-typescript": "^1.2.0",
+    "@storybook/react": "^5.3.8",
+    "@types/jest": "^24.9.0",
     "@types/node": "^13.1.8",
+    "@types/ramda": "^0.26.39",
     "@types/react": "^16.9.17",
+    "@types/react-dom": "^16.9.5",
+    "@types/storybook__addon-info": "^5.2.1",
+    "@types/styled-components": "^4.4.2",
+    "babel-loader": "^8.0.6",
+    "cpx": "^1.5.0",
+    "fork-ts-checker-webpack-plugin": "^4.0.1",
+    "husky": "^4.0.10",
+    "jest": "^25.1.0",
+    "lint-staged": "^10.0.0",
+    "prettier": "^1.19.1",
+    "react-docgen-typescript-loader": "^3.6.0",
+    "stylelint": "^13.0.0",
+    "stylelint-8-point-grid": "^0.2.3",
+    "stylelint-a11y": "^1.2.2",
+    "stylelint-color-format": "^1.0.0",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-high-performance-animation": "^1.4.0",
+    "stylelint-images": "^2.0.1",
+    "stylelint-order": "^4.0.0",
+    "stylelint-prettier": "^1.1.2",
+    "stylelint-processor-styled-components": "^1.9.0",
+    "stylelint-use-logical": "^1.1.0",
+    "ts-jest": "^25.0.0",
+    "ts-loader": "^6.2.1",
     "typescript": "^3.7.5"
   }
 }

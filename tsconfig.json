@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
+    "allowJs": false,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -14,8 +13,17 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "noUnusedLocals": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "baseUrl": ".",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "outDir": "build/lib",
+    "paths": {
+      "@App/*": ["src/*"]
+    },
+    "rootDirs": ["src"]
   },
-  "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
+  "exclude": ["node_modules", "build", "scripts"],
+  "include": ["next-env.d.ts", "src/**/*"]
 }
