@@ -25,5 +25,5 @@
     "rootDirs": ["src"]
   },
   "exclude": ["node_modules", "build", "scripts"],
-  "include": ["next-env.d.ts", "src/**/*"]
+  "include": ["next-env.d.ts", "**/*.tsx", "**/*.ts", "**/*.js"]
 }

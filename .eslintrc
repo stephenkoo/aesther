@@ -1,0 +1,53 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "impliedStrict": true,
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "eslint-plugin-tsdoc",
+    "fp",
+    "jest",
+    "jest-dom",
+    "jsx-a11y",
+    "prettier",
+    "ramda",
+    "react-hooks",
+    "testing-library"
+  ],
+  "extends": [
+    "standard-with-typescript",
+    "standard-react",
+    "plugin:fp/recommended",
+    "plugin:jest/recommended",
+    "plugin:jest-dom/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:ramda/recommended",
+    "plugin:testing-library/recommended",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/react",
+    "prettier/standard"
+  ],
+  "rules": {
+    // Next.js uses React classes
+    "fp/no-class": "off",
+    // TypeScript can infer return type, so it is unnecessary to
+    // require explicit return types.
+    "@typescript-eslint/explicit-function-return-type": "off",
+    // Enable TSDoc linting
+    "tsdoc/syntax": "warn"
+  },
+  "env": {
+    "jest/globals": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

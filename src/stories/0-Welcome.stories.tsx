@@ -9,6 +9,7 @@ export default {
 
 export const ToStorybook = () => <Welcome showApp={linkTo('Button')} />
 
+/* eslint-disable fp/no-mutation */
 ToStorybook.story = {
   name: 'to Storybook',
 }
